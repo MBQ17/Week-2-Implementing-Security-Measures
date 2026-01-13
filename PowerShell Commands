@@ -1,0 +1,37 @@
+Fix PowerShell npm execution policy:
+1. Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
+2. Get-ExecutionPolicy
+--------------------------------------------------------------------------
+Go to OWASP Juice Shop folder:
+cd path
+--------------------------------------------------------------------------
+Install required security libraries:
+npm install validator bcrypt helmet jsonwebtoken
+--------------------------------------------------------------------------
+Start OWASP Juice Shop:
+1. npm install
+2. npm start
+--------------------------------------------------------------------------
+Test WEAK password (should be rejected):
+curl -X POST http://localhost:3000/rest/user/login `
+-H "Content-Type: application/json" `
+-d '{"email":"test@test.com","password":"123"}'
+--------------------------------------------------------------------------
+Test SQL Injection (should fail):
+curl -X POST http://localhost:3000/rest/user/login `
+-H "Content-Type: application/json" `
+-d '{"email":"admin@juice-sh.op\' OR 1=1--","password":"Admin@123"}'
+--------------------------------------------------------------------------
+Test XSS payload (should fail):
+curl -X POST http://localhost:3000/rest/user/login `
+-H "Content-Type: application/json" `
+-d '{"email":"<script>alert(1)</script>","password":"Strong@123"}'
+--------------------------------------------------------------------------
+Test VALID login:
+curl -X POST http://localhost:3000/rest/user/login `
+-H "Content-Type: application/json" `
+-d '{"email":"user@test.com","password":"Strong@123"}'
+--------------------------------------------------------------------------
+Stop server:
+Ctrl + C
+--------------------------------------------------------------------------
