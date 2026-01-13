@@ -1,0 +1,48 @@
+Project Overview:
+This repository documents a security testing and hardening task performed on OWASP Juice Shop, a deliberately vulnerable web application. 
+The task focuses on identifying and testing common web vulnerabilities using PowerShell commands and applying basic security controls at the application level.
+The goal of this task is to understand how vulnerabilities like SQL Injection, Cross-Site Scripting (XSS), and Weak Password Authentication work, and how they can be tested and mitigated.
+
+Objectives:
+Configure PowerShell to allow Node.js and npm commands
+Install and run OWASP Juice Shop locally
+Test authentication vulnerabilities using PowerShell
+Verify that weak passwords are accepted (default vulnerable behavior)
+Perform SQL Injection and XSS testing
+Understand how insecure code causes security issues
+Practice secure coding concepts in a controlled environment
+
+Tools & Technologies Used:
+OWASP Juice Shop
+Node.js & npm
+PowerShell (Windows)
+Express.js
+Validator & bcrypt libraries
+curl (PowerShell)
+
+Security Testing Performed:
+1. Weak Password Testing:
+Tested login endpoint with weak passwords
+Verified insecure acceptance of weak credentials
+
+2. SQL Injection Testing:
+Used crafted SQL payloads via PowerShell
+Tested direct query execution vulnerability
+
+XSS Testing:
+Injected JavaScript payloads in login fields
+Verified lack of input sanitization
+
+Key Learning Outcomes:
+PowerShell execution policy can block npm scripts
+Unsanitized SQL queries lead to SQL Injection
+Missing input validation allows XSS attacks
+Weak password acceptance is a serious security risk
+Security testing can be done.
+
+Disclaimer:
+This project is for educational purposes only.
+OWASP Juice Shop is intentionally insecure and should never be used in production.
+
+Author:
+Muhammad Bin Qasim
